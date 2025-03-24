@@ -1,3 +1,3 @@
 build_job:
   script:
-    - docker build -t ci-project .
+   - build -t git-ci .
