@@ -1,4 +1,5 @@
 #!/bin/bash
-echo " hello from GITLAB CI/CD " >> hello.txt
-cat hello.txt
+
+echo " this is my first gitlab cicd project" > text.txt
+cat text.txt
 sleep 10
