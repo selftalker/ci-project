@@ -1,7 +1,19 @@
-name: Build
-on: [push]
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - run: docker build -t test .
+stages:
+  - build
+  - test
+
+build_job:
+  stage: build
+  script:
+    - docker build -t demo-image .
+    - docker save demo-image > demo-image.tar
+  artifacts:
+    paths:
+      - demo-image.tar
+
+test_job:
+  stage: test
+  script:
+    - docker load < demo-image.tar
+    - docker run demo-image > output.txt
+    - grep "hello" output.txt
