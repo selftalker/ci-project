@@ -1,3 +1,7 @@
-build_job:
-  script:
-   - build -t git-ci .
+name: Build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: docker build -t test .
